@@ -11,21 +11,29 @@
     "test:watch": "yarn test --watch",
     "generate": "yarn plop --plopfile generators/plopfile.js",
     "storybook": "start-storybook -s ./public -p 6006",
-    "build-storybook": "build-storybook -s ./public",
-    "postinstall": "husky install"
-  },
-  "lint-staged": {
-    "src/**/*": [
-      "yarn lint --fix",
-      "yarn test --findRelatedTests --bail"
-    ]
+    "build-storybook": "build-storybook -s ./public"
   },
   "dependencies": {
+    "@styled-icons/evaicons-solid": "^10.18.0",
+    "@styled-icons/material": "^10.28.0",
+    "@styled-icons/material-outlined": "^10.28.0",
+    "@testing-library/user-event": "^13.0.6",
+    "axios": "^0.21.1",
+    "leaflet": "^1.7.1",
     "next": "10.0.8",
     "next-pwa": "^5.0.5",
+    "nextjs-progressbar": "^0.0.8",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "styled-components": "5.2.1"
+    "react-leaflet": "^3.1.0",
+    "react-leaflet-google-layer": "^2.0.3",
+    "react-loader-spinner": "^4.0.0",
+    "react-modal": "^3.12.1",
+    "react-query": "^3.12.1",
+    "react-select": "^4.3.0",
+    "react-tooltip": "^4.2.15",
+    "styled-components": "5.2.1",
+    "styled-media-query": "^2.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.13.8",
@@ -35,8 +43,10 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@types/jest": "^26.0.20",
+    "@types/leaflet": "^1.7.0",
     "@types/node": "^14.14.31",
     "@types/react": "^17.0.2",
+    "@types/react-select": "^4.0.13",
     "@types/styled-components": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^4.16.1",
     "@typescript-eslint/parser": "^4.16.1",

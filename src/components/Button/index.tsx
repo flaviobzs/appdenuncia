@@ -1,0 +1,13 @@
+import React, { ButtonHTMLAttributes } from 'react'
+import * as Styles from './styles'
+
+export type ButtonProps = {
+  outlined?: boolean
+  onClick?: () => void
+} & ButtonHTMLAttributes<HTMLButtonElement>
+
+const Button: React.FC<ButtonProps> = ({ children, outlined = false }) => (
+  <Styles.Wrapper outlined={outlined}>{children}</Styles.Wrapper>
+)
+
+export default Button
