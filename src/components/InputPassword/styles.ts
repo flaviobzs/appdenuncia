@@ -10,43 +10,49 @@ export const Wrapper = styled.div`
 `
 
 export const InputWrapper = styled.label<InputProps>`
-  display: flex;
-  position: relative;
-  height: 48px;
-  margin-bottom: 3px;
+  ${({ theme, isError }) => css`
+    display: flex;
+    position: relative;
+    margin-bottom: 3px;
 
-  &:focus {
-    border: 0px;
-  }
+    svg {
+     position: absolute;
+     right: 8px;
+     top: 12px;
+     width: 20px;
+     height: 20px;
+     cursor: pointer;
+   }
 
-  > input {
-    width: 100%;
-    background-color: #f5f5f5;
-    border: 0px;
-    border-radius: 4px;
-    padding: 16px 12px 14px;
-    color: #4a4a4a;
+    input {
+      font-size: 18px;
+      width: 100%;
+      /* background-color: ${theme.colors.lightGray} */
+      background-color: #fafafa;
+      border: 1px solid #4a4a4a;
+      border-radius: 20px;
+      padding: 16px 20px;
+      //props.withIcon ? '16px 35px 14px 12px' : '16px 14px '};
+      color: #4a4a4a;
 
-    &::placeholder {
+      border: ${isError && '2px solid #ff7608'};
+
+      &::placeholder {
       color: #919191;
+      }
+
+     &:focus {
+       outline: 0px;
+     }
     }
 
-    &:focus {
-      outline: 0px;
-    }
-
-    ${(props) =>
-      props.isError &&
-      css`
-        border: 2px solid #ff7608;
-      `};
-  }
+  `}
 `
 export const IconOn = styled(Visibility)`
   fill: #4a4a4a;
   position: absolute;
   right: 12px;
-  top: 16px;
+  top: 30px;
   width: 11px;
   height: 11px;
   cursor: pointer;
@@ -55,8 +61,8 @@ export const IconOn = styled(Visibility)`
 export const IconOff = styled(VisibilityOff)`
   fill: #4a4a4a;
   position: absolute;
-  right: 12px;
-  top: 16px;
+  right: 22px;
+  top: 32px;
   width: 11px;
   height: 11px;
   cursor: pointer;

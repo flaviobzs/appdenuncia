@@ -11,7 +11,10 @@ export default function ComplaintMap() {
       <S.ContentMap>
         <Map />
       </S.ContentMap>
-      <S.Section></S.Section>
+      <S.Section>
+        <S.ContentButton/>
+        <S.ContentInfo/>
+      </S.Section>
     </S.Wrapper>
   )
 }

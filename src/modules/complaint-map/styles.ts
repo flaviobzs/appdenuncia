@@ -18,12 +18,23 @@ export const ContentMap = styled.main`
 `
 export const Section = styled.section`
   /* width: 440px; */
-  width: 600px;
-  padding: 80px;
-  background-image: linear-gradient(to left, #6a11cb 0%, #2575fc 80%);
+  width: 400px;
+  /* padding: 80px; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   /* border-top-left-radius: 10%;
   border-bottom-left-radius: 10%; */
 `
+
+export const ContentInfo = styled.div`
+background-image: linear-gradient(to left, #6a11cb 0%, #2575fc 80%);
+height: 100%;
+border-top-left-radius: 20px;
+`
+
+export const ContentButton = styled.div`
+/* background: red; */
+height: 100px;
+`
+

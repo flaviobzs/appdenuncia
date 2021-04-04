@@ -10,7 +10,6 @@ export const Default: Story = (args) => {
   return (
     <InputDescription
       name="teste"
-      error="teste"
       placeholder="teste"
       {...args}
     />
@@ -18,3 +17,16 @@ export const Default: Story = (args) => {
 }
 
 Default.args = {}
+
+export const WithError: Story = (args) => {
+  return (
+    <InputDescription
+      name="teste"
+      error="teste"
+      placeholder="teste"
+      {...args}
+    />
+  )
+}
+
+WithError.args = {}

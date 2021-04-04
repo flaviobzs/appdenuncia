@@ -9,31 +9,34 @@ export const Wrapper = styled.div`
 `
 
 export const TextAreaWrapper = styled.textarea<InputProps>`
+${({ isError }) => css`
   display: flex;
   width: 100%;
   position: relative;
   height: 48px;
   margin-bottom: 3px;
 
-  background: #f5f8fa;
-  border: 1px solid #d3e2e5;
+  background: #fafafa;
+  border: 1px solid #4a4a4a;
   border-radius: 20px;
   outline: none;
-  color: #5c8599;
+  color: #4a4a4a;
   min-height: 120px;
   max-height: 240px;
   resize: vertical;
   padding: 16px;
   line-height: 28px;
 
+  border: ${isError && '2px solid #ff7608'};
+
   &:focus {
     border: 0px;
   }
 
-  > input {
+  input {
     font-size: 18px;
     width: 100%;
-    background-color: #f5f5f5;
+    background-color: #fafafa;
     border: 0px;
     border-radius: 4px;
     padding: 16px 35px 14px 12px;
@@ -48,10 +51,8 @@ export const TextAreaWrapper = styled.textarea<InputProps>`
       outline: 0px;
     }
 
-    ${(props) =>
-      props.isError &&
-      css`
-        border: 2px solid #ff7608;
-      `};
+
+  }
+`
   }
 `

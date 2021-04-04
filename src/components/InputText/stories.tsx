@@ -7,7 +7,13 @@ export default {
 } as Meta
 
 export const Default: Story = (args) => {
-  return <InputText name="teste" error="teste" placeholder="teste" {...args} />
+  return <InputText name="teste" placeholder="teste" {...args} />
 }
 
 Default.args = {}
+
+export const WithError: Story = (args) => {
+  return <InputText name="teste" error="teste" placeholder="teste" {...args} />
+}
+
+WithError.args = {}

@@ -4,7 +4,7 @@ import { ButtonProps } from '.'
 type WrapperProps = Pick<ButtonProps, 'outlined'>
 
 export const Wrapper = styled.button<WrapperProps>`
-  height: 48px;
+  height: 56px;
   width: 100%;
   padding: 16px auto;
   text-align: center;
