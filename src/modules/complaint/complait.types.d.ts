@@ -3,7 +3,9 @@ export type Complaint = {
   name: string
   position: Position
   description: string
-  assets?: string
+  type_place?: string
+  quantity?: number
+  mask?: number
   created_at?: string
   updated_at?: string
 }

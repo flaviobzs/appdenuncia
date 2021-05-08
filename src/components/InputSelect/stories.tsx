@@ -22,7 +22,9 @@ const colourOptions = [
 ]
 
 export const Default: Story = (args) => (
-  <InputSelect name='teste' options={colourOptions} {...args} />
+  <InputSelect name="teste" options={colourOptions} {...args} />
 )
 
-Default.args = {}
+export const WithError: Story = (args) => (
+  <InputSelect name="teste" error="teste" options={colourOptions} {...args} />
+)

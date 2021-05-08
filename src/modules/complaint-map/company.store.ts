@@ -1,4 +1,4 @@
-import { createMutateStore } from '../../lib/store/createQueryStore';
-import { postCompany } from './company.service';
+import { createMutateStore } from '../../lib/store/createQueryStore'
+import { postCompany } from './company.service'
 
-export const useCompany = createMutateStore('company', postCompany);
+export const useCompany = createMutateStore('company', postCompany)

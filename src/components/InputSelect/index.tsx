@@ -1,109 +1,57 @@
-import React, { components } from 'react-select'
-import * as Styles from './styles'
-
+import React from 'react'
+import ReactSelect, { components } from 'react-select'
+import IconSelect from './IconSelect'
+import { customStyles } from './custom'
 import Error from '../Error'
 
-type Options = {
-  label: string
+type Option = {
   value: string
+  label: string
 }
 
-export type DropdownProps = {
+export type InputSelectProps = {
   error?: string
-  options: Options[]
+  options: Option[]
   name: string
+  defaultValue?: Option
+  placeholder?: string
 }
 
-const customStyles = {
-  control: (base: any) => ({
-    ...base,
-    borderColor: '#F5F5F5',
-    backgroundColor: '#F5F5F5',
-    border: '0px',
-    outline: '0px',
-    boxShadow: '0px',
-    '&:focus': {
-      outline: '0px',
-      border: '0px'
-    },
-    '&:active': {
-      outline: '0px',
-      border: '0px'
-    },
-    '&:hover': {
-      outline: '0px',
-      border: '0px'
-    }
-  }),
-  placeholder: (base: any) => ({
-    ...base,
-    fontSize: '14px',
-    color: '#919191',
-    lineWeight: '22px'
-  }),
-  option: (base: any, state: any) => ({
-    ...base,
-    backgroundColor: state.isSelected ? '#82288D' : '#F5F5F5',
-    color: state.isSelected ? '#F5F5F5' : '#4A4A4A',
-    height: '47px',
-    margin: '0px',
-    padding: '12px',
-    fontSize: '14px',
-    lineHeight: '22px',
-    '&:hover': {
-      backgroundColor: state.isFocused ? '#82288D' : '#F5F5F5',
-      color: state.isFocused ? '#F5F5F5' : '#4A4A4A'
-    }
-  }),
-  menu: () => ({
-    paddingTop: '20px',
-    '&:before': {
-      position: 'absolute',
-      content: '""',
-      width: '0px',
-      height: '0px',
-      top: '42px',
-      zIndex: '100',
-      left: '25px',
-      borderBottom: '16px solid#F5F5F5',
-      borderRight: '16px solid transparent',
-      borderLeft: '16px solid transparent'
-    }
-  }),
-  menuList: (base: any) => ({
-    ...base,
-    padding: '0px',
-    borderRadius: '4px'
-  }),
-  menuPortal: (base: any) => ({
-    ...base,
-    backgroundColor: 'blue'
-  })
+type Error = {
+  type: string
+  message: string
 }
 
 const DropdownIndicator = (props: any) => {
   return (
     <components.DropdownIndicator {...props}>
-      <Styles.Icon data-testid="icon-select" />
+      <IconSelect data-testid="icon-select" />
     </components.DropdownIndicator>
   )
 }
 
-const InputSelect: React.FC<DropdownProps> = ({
+const InputSelect: React.FC<InputSelectProps> = ({
   error,
   name,
   options,
-  ...props
+  defaultValue,
+  placeholder = 'Selecione uma opção',
+  ...rest
 }) => (
   <>
-    <Styles.Wrapper
+    <ReactSelect
+      //@ts-ignore
+      styles={customStyles}
       data-testid="select"
       error={error}
+      id={`select-${name}`}
+      instanceId={`select-${name}`}
+      placeholder={placeholder}
       name={name}
-      styles={customStyles}
+      defaultValue={defaultValue}
       options={options}
       components={{ DropdownIndicator }}
-      {...props}
+      {...rest}
     />
     {!!error && <Error>{error}</Error>}
   </>

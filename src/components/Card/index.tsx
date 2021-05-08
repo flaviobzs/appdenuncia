@@ -2,17 +2,14 @@ import React from 'react'
 import * as Styles from './styles'
 
 export type CardProps = {
-  onClick?: () => void
+  label: string
 }
 
-const Card: React.FC<CardProps> = ({ children, onClick }) => (
+const Card: React.FC<CardProps> = ({ label }) => (
   <Styles.Wrapper>
-    <button data-testid="button-close" 
-      onClick={onClick}
-    >
-      <Styles.Icon />
-    </button>
-    <Styles.Content>{children}</Styles.Content>
+    <Styles.Content>
+      <p>{label}</p>
+    </Styles.Content>
   </Styles.Wrapper>
 )
 

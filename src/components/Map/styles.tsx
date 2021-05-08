@@ -1,7 +1,11 @@
 import styled from 'styled-components'
+import media from 'styled-media-query'
 
 export const MapWrapper = styled.div`
   position: relative;
+  box-shadow: 0px 2px 5px #919191;
+
+  border-radius: 20px;
 
   width: 100%;
   height: 100%;
@@ -10,6 +14,10 @@ export const MapWrapper = styled.div`
     z-index: 5;
     border-radius: 20px;
   }
+
+  ${media.greaterThan('medium')`
+  border: 1px solid #e8e8e8;
+  `}
 `
 
 // popup no mapa

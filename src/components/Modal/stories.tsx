@@ -4,7 +4,7 @@ import Popup from '.'
 
 export default {
   title: 'Popup',
-  component: Popup,
+  component: Popup
 } as Meta
 
 export const Default: Story = (args) => {
@@ -15,7 +15,7 @@ export const Default: Story = (args) => {
   }
 
   return (
-    <Popup isOpen={modalOpen} setIsClose={toggleModal} {...args}>
+    <Popup isOpen={modalOpen} setIsOpen={toggleModal} {...args}>
       <div>
         <p>ddddddddddddd</p>
         <p>ddddddddddddd</p>

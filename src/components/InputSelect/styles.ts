@@ -1,11 +1,15 @@
 import styled, { css } from 'styled-components'
-import Select from 'react-select'
+import ReactSelect from 'react-select'
 import { PlayArrow } from '@styled-icons/material'
 
-import { DropdownProps } from '.'
+import { InputSelectProps } from '.'
 
-export const Wrapper = styled(Select)<DropdownProps>`
+export const Wrapper = styled(ReactSelect)<InputSelectProps>`
   margin-bottom: 3px;
+
+  .input-select__control {
+    color: 'red';
+  }
 
   & > div:first-child {
     ${(props) =>

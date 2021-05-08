@@ -4,7 +4,8 @@ import {
   TileLayer,
   Marker,
   Popup,
-  MapConsumer
+  MapConsumer,
+  useMapEvents
 } from 'react-leaflet'
 import * as S from './styles'
 import { mapView } from './config'
@@ -24,8 +25,40 @@ import ReactLeafletGoogleLayer from 'react-leaflet-google-layer'
 // })
 
 import CreateComplaintButton from '../CreateComplaintButton'
+import { useState } from 'react'
+import MarkerIcon from 'components/Marker'
 
-const Map = () => (
+export type MapProps = {
+  button?: boolean
+  children?: any
+  marker?: boolean
+}
+
+function LocationMarker() {
+  const [position, setPosition] = useState(null)
+  const map = useMapEvents({
+    click(e) {
+      // map.locate()
+      console.log('DADO', e)
+      setPosition(e.latlng)
+    }
+    // locationfound(e) {
+    //   setPosition(e.latlng)
+    //   map.flyTo(e.latlng, map.getZoom())
+    // }
+  })
+
+  return position === null ? null : (
+    <MarkerIcon position={position}></MarkerIcon>
+  )
+}
+
+const Map = ({
+  button = false,
+  children,
+  marker = false,
+  ...rest
+}: MapProps) => (
   <S.MapWrapper>
     <MapContainer
       // agora que é componente, recebe isso
@@ -47,6 +80,9 @@ const Map = () => (
         [-180, 180],
         [180, -180]
       ]}
+      // onclick={onClick}
+      // dragging={() => console.log('dddd')}
+      {...rest}
     >
       <MapConsumer>
         {(map) => {
@@ -84,35 +120,11 @@ const Map = () => (
         url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.NEXT_PUBLIC_MAPBOX_TOKEN}`}
       /> */}
 
-      {/* {children}  */}
+      {children}
       {/* receber Marker para interar como childrem  */}
-      <Marker
-        // key={}
-        // title={}
-        eventHandlers={
-          {
-            // click: () => Router.push(`/${xxx}`)
-          }
-        }
-        position={[0, 0]}
-      >
-        {/* <Popup
-          closeButton={false}
-          minWidth={240}
-          maxWidth={240}
-
-          edição no css!!!!!
-
-          className="map-popup"
-        >
-          Lar das meninas
-          <a>
-            <FiArrowRight size={20} color="#fff" />
-          </a>
-        </Popup> */}
-      </Marker>
+      {marker && <LocationMarker />}
     </MapContainer>
-    <CreateComplaintButton />
+    {button && <CreateComplaintButton />}
   </S.MapWrapper>
 )
 

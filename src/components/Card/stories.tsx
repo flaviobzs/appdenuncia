@@ -3,13 +3,13 @@ import Card from '.'
 
 export default {
   title: 'Card',
-  component: Card,  
+  component: Card,
   parameters: {
-    layout: 'centered',
-  },
+    layout: 'centered'
+  }
 } as Meta
 
-export const Default: Story = (args) => <Card {...args} />
+export const Default: Story = (args) => <Card label="dddd" {...args} />
 
 Default.args = {
   children: 'teste com card'

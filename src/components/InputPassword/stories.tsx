@@ -7,3 +7,7 @@ export default {
 } as Meta
 
 export const Default: Story = (args) => <InputPassword name="teste" {...args} />
+
+export const WithError: Story = (args) => (
+  <InputPassword error="teste" name="teste" {...args} />
+)

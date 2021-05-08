@@ -2,21 +2,21 @@ import {
   useMutation,
   UseMutationResult,
   useQuery,
-  UseQueryResult,
-} from 'react-query';
-import { TError, TResponse } from '../service/api.types';
+  UseQueryResult
+} from 'react-query'
+import { TError, TResponse } from '../service/api.types'
 
 export const createQueryStore = (
-  key,
-  promise,
-  config = null
+  key: string,
+  promise: any,
+  config = {}
 ) => (): UseQueryResult<TResponse, TError> => {
-  return useQuery(key, promise, config);
-};
+  return useQuery(key, promise, config)
+}
 
 export const createMutateStore = (
-  promise,
-  config = null
+  promise: any,
+  config = {}
 ) => (): UseMutationResult => {
-  return useMutation(promise, config);
-};
+  return useMutation(promise, config)
+}

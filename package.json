@@ -1,5 +1,5 @@
 {
-  "name": "react-avancado-boilerplate",
+  "name": "appdenuncia",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -14,9 +14,11 @@
     "build-storybook": "build-storybook -s ./public"
   },
   "dependencies": {
+    "@styled-icons/entypo": "^10.18.0",
     "@styled-icons/evaicons-solid": "^10.18.0",
     "@styled-icons/material": "^10.28.0",
     "@styled-icons/material-outlined": "^10.28.0",
+    "@styled-icons/material-twotone": "^10.28.0",
     "@testing-library/user-event": "^13.0.6",
     "axios": "^0.21.1",
     "leaflet": "^1.7.1",
@@ -30,6 +32,7 @@
     "react-loader-spinner": "^4.0.0",
     "react-modal": "^3.12.1",
     "react-query": "^3.12.1",
+    "react-rating": "^2.0.5",
     "react-select": "^4.3.0",
     "react-tooltip": "^4.2.15",
     "styled-components": "5.2.1",

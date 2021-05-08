@@ -8,20 +8,20 @@ export default {
     theme: {
       control: {
         type: 'radio',
-        options: ['dark', 'light'],
-      },
-    },
-  },
+        options: ['dark', 'light']
+      }
+    }
+  }
 } as Meta
 
 export const Default: Story = (args) => <Divider theme="dark" {...args} />
 
 Default.args = {
-  theme: 'dark',
+  theme: 'dark'
 }
 
 export const Light: Story = (args) => <Divider theme="light" {...args} />
 
 Light.args = {
-  theme: 'light',
+  theme: 'light'
 }

@@ -23,7 +23,7 @@ export const Input = styled.input<InputProps>`
   appearance: none;
   width: 16px;
   height: 16px;
-  border: 2px solid #82288d;
+  border: 2px solid black;
   border-radius: 50%;
   background: transparent;
   outline: none;
@@ -35,7 +35,7 @@ export const Input = styled.input<InputProps>`
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #82288d;
+    background: black;
     opacity: 0;
     position: absolute;
   }

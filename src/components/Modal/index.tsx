@@ -1,19 +1,26 @@
-import React from 'react'
-import * as Styles from './styles'
+import React, { useState, useEffect } from 'react'
 import ReactModal from 'react-modal'
+import * as S from './styles'
 
-export type PopupProps = {
+export type ModalProps = {
+  children: any
   isOpen: boolean
-  setIsClose: () => void
+  setIsOpen: () => void
 }
 
-const Popup: React.FC<PopupProps> = ({ children, isOpen, setIsClose }) => {
+const Modal: React.FC<ModalProps> = ({ children, isOpen, setIsOpen }) => {
+  const [modalStatus, setModalStatus] = useState(isOpen)
+
+  useEffect(() => {
+    setModalStatus(isOpen)
+  }, [isOpen])
+
   return (
     <ReactModal
-      isOpen={isOpen}
       contentLabel="onRequestClose"
-      onRequestClose={setIsClose}
-      shouldCloseOnOverlayClick={true}
+      shouldCloseOnOverlayClick={!false}
+      onRequestClose={setIsOpen}
+      isOpen={modalStatus}
       ariaHideApp={false}
       style={{
         content: {
@@ -23,25 +30,26 @@ const Popup: React.FC<PopupProps> = ({ children, isOpen, setIsClose }) => {
           bottom: 'auto',
           marginRight: '-50%',
           transform: 'translate(-50%, -50%)',
-          borderRadius: '10px',
-          width: '290px',
+          width: '100%',
+          maxWidth: '440px',
           border: 'none',
+          borderRadius: '8px',
           padding: '48px 25px',
           background: '#ffffff',
           boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
           position: 'relative',
+          zIndex: 100
         },
         overlay: {
-          backgroundColor: '#121214e6',
-        },
+          backgroundColor: 'rgba(0, 0, 0, 0.25)',
+          zIndex: 100
+        }
       }}
     >
-      <Styles.Container>
-        <Styles.Close onClick={setIsClose} data-testid="closemodal" />
-        {children}
-      </Styles.Container>
+      <S.Close onClick={setIsOpen} />
+      <div>{children}</div>
     </ReactModal>
   )
 }
 
-export default Popup
+export default Modal

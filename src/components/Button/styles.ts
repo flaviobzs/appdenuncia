@@ -12,7 +12,7 @@ export const Wrapper = styled.button<WrapperProps>`
   border-radius: 20px;
   font-weight: 600;
   line-height: 22px;
-  background-color: #ff7608;
+  background-color: #e27b00;
   color: #ffffff;
   border: 0;
   cursor: pointer;
@@ -40,7 +40,7 @@ export const Wrapper = styled.button<WrapperProps>`
     css`
       background-color: #ffffff;
       border: solid 1px;
-      border-color: #ff7608;
-      color: #ff7608;
+      border-color: #e27b00;
+      color: #e27b00;
     `};
 `

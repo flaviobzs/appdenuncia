@@ -4,7 +4,7 @@ import Loader from 'react-loader-spinner'
 
 const DisplayLoader: React.FC = () => (
   <Styles.Wrapper data-testid="loader">
-    <Loader />
+    <Loader type="Circles" />
   </Styles.Wrapper>
 )
 
