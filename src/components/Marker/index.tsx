@@ -2,11 +2,17 @@ import L from 'leaflet'
 import { Marker, Popup } from 'react-leaflet'
 import ReactDOMServer from 'react-dom/server'
 import Icons from './icon'
-const MarkerIcon = ({ position = [-16.7412211, -49.3511868], ...props }) => {
+
+type MarkerProps = {
+  position: any
+  color?: string
+}
+
+const MarkerIcon = ({ position, color = 'red', ...props }: MarkerProps) => {
   const icon = L.divIcon({
     className: 'custom-icon',
     html: ReactDOMServer.renderToString(
-      <Icons color="red" width="58px" height="68px" />
+      <Icons color={color} width="58px" height="68px" />
     ),
     iconSize: [35, 35],
     iconAnchor: [17, 35],

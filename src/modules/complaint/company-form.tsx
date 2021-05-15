@@ -17,6 +17,7 @@ import * as S from './styles'
 import Form from 'components/Form'
 import { LeafletMouseEvent } from 'leaflet'
 import { useMapEvents } from 'react-leaflet'
+import Location from './location'
 
 export default function SignUpForm() {
   const [modalSuccessOpen, setModalSuccessOpen] = useState(true)
@@ -48,6 +49,7 @@ export default function SignUpForm() {
             {/* <Marker
               position={[position.latitude, position.longitude]}
             /> */}
+            <Location />
           </Map>
         </S.InputMap>
         <Description>Nome do lugar</Description>

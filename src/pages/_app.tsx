@@ -2,10 +2,11 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 import NextNprogress from 'nextjs-progressbar'
 import GlobalStyles from 'styles/global'
+import AppProvider from '../hooks'
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <AppProvider>
       <Head>
         <title>Denúncias de Aglomerações</title>
         <link rel="shortcut icon" href="/img/icon-512.png" />
@@ -30,7 +31,7 @@ function App({ Component, pageProps }: AppProps) {
         height={5}
       />
       <Component {...pageProps} />
-    </>
+    </AppProvider>
   )
 }
 
