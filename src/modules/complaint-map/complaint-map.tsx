@@ -22,7 +22,7 @@ export default function ComplaintMap() {
       </S.LoginLink>
       <S.ContentMap>
         <Map button={true}>
-          <Marker />
+          {/* <Marker /> */}
           <Location />
         </Map>
       </S.ContentMap>

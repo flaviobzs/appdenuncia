@@ -18,21 +18,28 @@ import Form from 'components/Form'
 import { LeafletMouseEvent } from 'leaflet'
 import { useMapEvents } from 'react-leaflet'
 import Location from './location'
+import { useAuth } from 'hooks/auth'
+import { useForm, Controller } from 'react-hook-form'
 
 export default function SignUpForm() {
   const [modalSuccessOpen, setModalSuccessOpen] = useState(true)
-  // const [position, setPosition] = useState({ latitude: 0, longitude: 0 })
+  const { user, signIn } = useAuth()
+  const { register, control, handleSubmit, watch, errors } = useForm({
+    mode: 'onBlur'
+  })
 
-  // function handleMapClick(event: LeafletMouseEvent) {
-  //   const { lat, lng } = event.latlng
+  const onSubmit = async (data: any) => {
+    // const response = await signIn({
+    // email: data.email,
+    // password: data.password
+    // })
+  }
 
-  //   console.log('dataaa', event)
-
-  //   setPosition({
-  //     latitude: lat,
-  //     longitude: lng
-  //   })
-  // }
+  //@ts-ignore
+  const handleOptions = (index, value, parent) => {
+    // setValue(`${parent}.channels[${index}].category`, value);
+    // clearErrors(`${parent}.channels[${index}].category`);
+  }
 
   return (
     <>
@@ -41,8 +48,8 @@ export default function SignUpForm() {
         isOpen={modalSuccessOpen}
         setIsOpen={() => setModalSuccessOpen(!modalSuccessOpen)}
       />
-
-      <Form>
+      {/* @ts-ignore */}
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <Description>Localização</Description>
         <S.InputMap>
           <Map marker={true}>
@@ -53,14 +60,37 @@ export default function SignUpForm() {
           </Map>
         </S.InputMap>
         <Description>Nome do lugar</Description>
-        <InputText name="email" placeholder="Nome do lugar" />
+        <InputText
+          name="email"
+          placeholder="Nome do lugar"
+          ref={register({
+            required: 'Campo obrigatório'
+          })}
+        />
 
         <Description>Tipo do lugar</Description>
-
-        <InputSelect
+        <Controller
+          render={({ name, value }) => (
+            <InputSelect
+              name="quantity"
+              placeholder="Tipo do lugar"
+              options={options}
+              defaultValue={value}
+              //@ts-ignore
+              onChange={(e) => handleOptions(index, e, parentName)}
+            />
+          )}
           name="quantity"
-          placeholder="Tipo do lugar"
-          options={options}
+          control={control}
+          rules={{ required: 'Campo obrigatório' }}
+          // defaultValue={
+          //   item?.category?.value
+          //     ? {
+          //         value: item?.category?.value,
+          //         label: item?.category?.label,
+          //       }
+          //     : ''
+          // }
         />
 
         <Description>Quantidade de pessoas</Description>
@@ -69,14 +99,43 @@ export default function SignUpForm() {
           type="number"
           name="numero"
           placeholder="Quantidade de pessoas"
+          ref={register({
+            required: 'Campo obrigatório'
+          })}
         />
         <Description>Descrição</Description>
-
-        <InputDescription name="descrition" placeholder="Observações" />
+        <Controller
+          render={({ name, value }) => (
+            <InputDescription name="descrition" placeholder="Observações" />
+          )}
+          name="descrition"
+          control={control}
+          rules={{ required: 'Campo obrigatório' }}
+          // defaultValue={
+          //   item?.category?.value
+          //     ? {
+          //         value: item?.category?.value,
+          //         label: item?.category?.label,
+          //       }
+          //     : ''
+          // }
+        />
 
         <Description>Quantidade de pessoas</Description>
-
-        <Rate name="quantity" />
+        <Controller
+          render={({ name, value }) => <Rate name="quantity" />}
+          name="descritisdsdon"
+          control={control}
+          rules={{ required: 'Campo obrigatório' }}
+          // defaultValue={
+          //   item?.category?.value
+          //     ? {
+          //         value: item?.category?.value,
+          //         label: item?.category?.label,
+          //       }
+          //     : ''
+          // }
+        />
 
         <Button>CRIAR</Button>
 

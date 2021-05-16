@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+//@ts-ignore
 import ReactModal from 'react-modal'
 import * as S from './styles'
 

@@ -4,7 +4,8 @@ import {
   Marker,
   Popup,
   MapConsumer
-} from 'react-leaflet'import React, { useState, useEffect } from 'react'
+} from 'react-leaflet'
+import React, { useState, useEffect } from 'react'
 
 export type ModalProps = {
   children: any

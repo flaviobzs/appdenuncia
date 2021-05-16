@@ -6,16 +6,48 @@ import Button from 'components/Button'
 import Description from 'components/Description'
 import Form from 'components/Form'
 import Link from 'next/link'
+import { useAuth } from 'hooks/auth'
+import { useForm } from 'react-hook-form'
 
 export default function SignInForm() {
+  const { user, signIn } = useAuth()
+  const { register, control, handleSubmit, watch, errors } = useForm({
+    mode: 'onBlur'
+  })
+
+  const onSubmit = async (data: any) => {
+    // const response = await signIn({
+    // email: data.email,
+    // password: data.password
+    // })
+  }
+
   return (
-    <Form>
+    //  @ts-ignore
+
+    <Form onSubmit={handleSubmit(onSubmit)}>
       {/* ACTIVITY FIELD */}
 
       <Description>E-mail</Description>
-      <InputText name="email" placeholder="Digite seu e-mail" />
+      <InputText
+        name="email"
+        placeholder="Digite seu e-mail"
+        ref={register({
+          required: 'Campo obrigatório',
+          pattern: {
+            value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+            message: 'Endereço de email inválido'
+          }
+        })}
+      />
       <Description>Senha</Description>
-      <InputPassword name="password" placeholder="Digite sua senha" />
+      <InputPassword
+        name="password"
+        placeholder="Digite sua senha"
+        ref={register({
+          required: 'Campo obrigatório'
+        })}
+      />
       <p>
         Não possui uma conta?
         <Link href="/sign-up">Cadastrar</Link>

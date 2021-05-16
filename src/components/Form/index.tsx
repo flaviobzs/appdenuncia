@@ -4,8 +4,8 @@ export type FormProps = {
   children: any
 }
 
-const Form: React.FC<FormProps> = ({ children }) => {
-  return <S.Wrapper>{children}</S.Wrapper>
+const Form: React.FC<FormProps> = ({ children, ...props }) => {
+  return <S.Wrapper {...props}>{children}</S.Wrapper>
 }
 
 export default Form
