@@ -18,7 +18,7 @@ export const InputWrapper = styled.label<InputProps>`
     svg {
       position: absolute;
       right: 18px;
-      top: 16px;
+      top: 13px;
       width: 20px;
       height: 20px;
       cursor: pointer;

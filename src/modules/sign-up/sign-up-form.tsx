@@ -8,8 +8,11 @@ import Form from 'components/Form'
 import Link from 'next/link'
 import { useAuth } from 'hooks/auth'
 import { useForm } from 'react-hook-form'
+
+import { DevTool } from '@hookform/devtools'
+
 export default function SignUpForm() {
-  const { user, signIn } = useAuth()
+  const { user, signUp } = useAuth()
   const {
     register,
     control,
@@ -23,26 +26,31 @@ export default function SignUpForm() {
   })
 
   const onSubmit = async (data: any) => {
-    // const response = await signIn({
+    // const response = await signUp({
     // email: data.email,
-    // password: data.password
+    // name: data.name,
+    // password: data.password,
+    // confirm_password: data.confirm_password,
     // })
   }
 
   let dataPassword = watch('password', '')
 
   return (
-    //  @ts-ignore
+    <>
+
+      {/* @ts-ignore */}
     <Form onSubmit={handleSubmit(onSubmit)}>
       {/* ACTIVITY FIELD */}
-
+      <DevTool control={control} />
       <Description>Nome</Description>
       <InputText
-        name="email"
+        name="name"
         placeholder="Digite seu nome"
         ref={register({
           required: 'Campo obrigatório'
         })}
+        error={errors.name?.message}
       />
       <Description>E-mail</Description>
       <InputText
@@ -55,38 +63,41 @@ export default function SignUpForm() {
             message: 'Endereço de email inválido'
           }
         })}
+        error={errors.email?.message}
       />
       <Description>Senha</Description>
       <InputPassword
         name="password"
         placeholder="Digite uma senha"
+        error={errors.password?.message}
         ref={register({
           required: 'Campo obrigatório',
-          validate: (value) => {
-            if (
-              value.match(/^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)
-            ) {
-              return
-            } else {
-              setError('confirm_password', {
-                type: 'required',
-                message: `A senha deve conter: \n - mínimo de 8 caracteres \n - mínimo de 1 número e 1 letra \n - um caracter especial`
-              })
-              return ''
-            }
-          }
+          // validate: (value) => {
+          //   if (
+          //     value.match(/^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)
+          //   ) {
+          //     return
+          //   } else {
+          //     setError('confirm_password', {
+          //       type: 'required',
+          //       message: `A senha deve conter: \n - mínimo de 8 caracteres \n - mínimo de 1 número e 1 letra \n - um caracter especial`
+          //     })
+          //     return ''
+          //   }
+          // }
         })}
       />
       <Description>Confirmação de senha</Description>
       <InputPassword
         name="confirm_password"
         placeholder="Confirme sua senha"
+        error={errors.confirm_password?.message}
         ref={register({
           required: 'Campo obrigatório',
-          pattern: {
-            value: /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-            message: `A senha deve conter: \n - mínimo de 8 caracteres \n - mínimo de 1 número e 1 letra \n - um caracter especial`
-          },
+          // pattern: {
+          //   value: /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+          //   message: `A senha deve conter: \n - mínimo de 8 caracteres \n - mínimo de 1 número e 1 letra \n - um caracter especial`
+          // },
           validate: (value) => {
             if (value == dataPassword) {
               clearErrors('password')
@@ -111,5 +122,6 @@ export default function SignUpForm() {
       {/* LOADER */}
       {/* {isLoading && <Loader color='#82288d' />} */}
     </Form>
+    </>
   )
 }

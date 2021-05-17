@@ -6,13 +6,31 @@ import Icons from './icon'
 type MarkerProps = {
   position: any
   color?: string
+  name?: string
 }
 
-const MarkerIcon = ({ position, color = 'red', ...props }: MarkerProps) => {
+const MarkerIcon = ({ position, color = '', name, ...props }: MarkerProps) => {
+  
+  const selectColor = (value: any) => {
+    switch (value) {
+      case '1':
+        return 'green'
+      case '2':
+        return 'blue'
+      case '3':
+        return 'orange'
+      case '4':
+        return 'red'
+      default:
+        return '#1b1c1b'
+    }
+  }
+  
+  
   const icon = L.divIcon({
     className: 'custom-icon',
     html: ReactDOMServer.renderToString(
-      <Icons color={color} width="58px" height="68px" />
+      <Icons color={selectColor(color)} width="58px" height="68px" />
     ),
     iconSize: [35, 35],
     iconAnchor: [17, 35],
@@ -27,7 +45,7 @@ const MarkerIcon = ({ position, color = 'red', ...props }: MarkerProps) => {
         maxWidth={230}
         className="map-popup"
       >
-        xxxxxx
+        {name}
       </Popup>
     </Marker>
   )

@@ -2,7 +2,7 @@ import React from 'react'
 import * as S from './styles'
 import Link from 'next/link'
 
-import ComplaintForm from './company-form'
+import ComplaintForm from './complaint-form'
 
 export default function ComplaintMap() {
   return (

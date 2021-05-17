@@ -30,7 +30,7 @@ export const Wrapper = styled.main<TemplateProps>`
 
 export const BannerBlock = styled.div`
   position: relative;
-  background-image: url(/img/bg-auth.jpg);
+  background-image: url(/img/bg-app.jpg);
   background-size: cover;
   background-position: center center;
   grid-area: banner;

@@ -39,22 +39,22 @@ export const customStyles = {
   }),
   option: (base: any, state: any) => ({
     ...base,
-    backgroundColor: state.isSelected ? 'red' : '#F5F5F5',
+    backgroundColor: state.isSelected ? '#FF9933' : '#F5F5F5',
     color: state.isSelected ? '#F5F5F5' : '#4A4A4A',
-    height: '40px',
+    // height: '40px',
     margin: '0px',
     padding: '7px 15px',
     fontSize: '14px',
     lineHeight: '22px',
     '&:hover': {
-      backgroundColor: state.isFocused ? 'red' : '#F5F5F5',
+      backgroundColor: state.isFocused ? '#FF9933' : '#F5F5F5',
       color: state.isFocused ? '#F5F5F5' : '#4A4A4A'
     }
   }),
   menu: (base: any) => ({
     ...base,
     marginTop: '20px',
-    borderRadius: '20px',
+    borderRadius: '2px',
 
     '&:before': {
       position: 'absolute',
@@ -88,7 +88,7 @@ export const customStyles = {
       background: '#e3e3e3'
     },
     padding: '0px',
-    borderRadius: '20px'
+    borderRadius: '2px'
   }),
   menuPortal: (base: any) => ({
     ...base,

@@ -9,7 +9,7 @@ import Description from 'components/Description'
 import InputSelect from 'components/InputSelect'
 import dynamic from 'next/dynamic'
 
-import { options } from './company.utils'
+import { options } from './complaint.utils'
 
 const Map = dynamic(() => import('components/Map'), { ssr: false })
 const Marker = dynamic(() => import('components/Marker'), { ssr: false })
@@ -17,14 +17,21 @@ import * as S from './styles'
 import Form from 'components/Form'
 import { LeafletMouseEvent } from 'leaflet'
 import { useMapEvents } from 'react-leaflet'
-import Location from './location'
+const Location = dynamic(() => import('./location'), { ssr: false })
 import { useAuth } from 'hooks/auth'
 import { useForm, Controller } from 'react-hook-form'
+
+
+import { DevTool } from '@hookform/devtools';
+import { useFavorite } from 'hooks/location'
+
 
 export default function SignUpForm() {
   const [modalSuccessOpen, setModalSuccessOpen] = useState(true)
   const { user, signIn } = useAuth()
-  const { register, control, handleSubmit, watch, errors } = useForm({
+  // const { location } = useFavorite()
+
+  const { register, control, handleSubmit, watch, errors, setValue, clearErrors } = useForm({
     mode: 'onBlur'
   })
 
@@ -35,19 +42,31 @@ export default function SignUpForm() {
     // })
   }
 
-  //@ts-ignore
-  const handleOptions = (index, value, parent) => {
-    // setValue(`${parent}.channels[${index}].category`, value);
-    // clearErrors(`${parent}.channels[${index}].category`);
+  // console.log(`fff`, location)
+
+  const handleOptions = (value: any) => {
+
+    console.log(`valeu`,value)
+    setValue(`type`, value?.value);
+    clearErrors(`type`);
+  }
+
+  const handleRateOptions = (value: any) => {
+
+    console.log(`quantity`,value)
+    setValue(`quantity`, value);
+    clearErrors(`quantity`);
   }
 
   return (
     <>
       {/* MODAL  */}
-      <Modal
+      {/* <Modal
         isOpen={modalSuccessOpen}
         setIsOpen={() => setModalSuccessOpen(!modalSuccessOpen)}
-      />
+      /> */}
+            <DevTool control={control} />
+
       {/* @ts-ignore */}
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Description>Localização</Description>
@@ -61,70 +80,50 @@ export default function SignUpForm() {
         </S.InputMap>
         <Description>Nome do lugar</Description>
         <InputText
-          name="email"
+          name="name"
           placeholder="Nome do lugar"
           ref={register({
             required: 'Campo obrigatório'
           })}
+          error={errors.name?.message}
         />
 
         <Description>Tipo do lugar</Description>
         <Controller
           render={({ name, value }) => (
             <InputSelect
-              name="quantity"
+              name={name}
               placeholder="Tipo do lugar"
               options={options}
               defaultValue={value}
               //@ts-ignore
-              onChange={(e) => handleOptions(index, e, parentName)}
+              onChange={(e) => handleOptions(e)}
+              error={errors.type?.message}
             />
           )}
-          name="quantity"
+          name="type"
           control={control}
           rules={{ required: 'Campo obrigatório' }}
-          // defaultValue={
-          //   item?.category?.value
-          //     ? {
-          //         value: item?.category?.value,
-          //         label: item?.category?.label,
-          //       }
-          //     : ''
-          // }
+          
         />
 
-        <Description>Quantidade de pessoas</Description>
-
-        <InputText
-          type="number"
-          name="numero"
-          placeholder="Quantidade de pessoas"
-          ref={register({
-            required: 'Campo obrigatório'
-          })}
-        />
+        
         <Description>Descrição</Description>
         <Controller
           render={({ name, value }) => (
-            <InputDescription name="descrition" placeholder="Observações" />
+            <InputDescription name="description" placeholder="Observações" error={errors.description?.message}/>
           )}
-          name="descrition"
+          name="description"
           control={control}
-          rules={{ required: 'Campo obrigatório' }}
-          // defaultValue={
-          //   item?.category?.value
-          //     ? {
-          //         value: item?.category?.value,
-          //         label: item?.category?.label,
-          //       }
-          //     : ''
-          // }
+          rules={{ required: 'Campo obrigatório' }}         
+          
         />
 
         <Description>Quantidade de pessoas</Description>
         <Controller
-          render={({ name, value }) => <Rate name="quantity" />}
-          name="descritisdsdon"
+        //@ts-ignore
+          render={({ name, value }) => <Rate name={name} error={errors.quantity?.message} setValue={(e) => handleRateOptions( e)}/>}
+          name="quantity"
           control={control}
           rules={{ required: 'Campo obrigatório' }}
           // defaultValue={

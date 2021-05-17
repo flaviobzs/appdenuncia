@@ -11,4 +11,12 @@ export const Content = styled.div`
   border-radius: 10px 10px 10px 1px;
   padding: 16px;
   margin-bottom: 3px;
+
+  p{
+    font-size: 12px
+  }
+
+  span{
+    font-size: 10px;
+  }
 `

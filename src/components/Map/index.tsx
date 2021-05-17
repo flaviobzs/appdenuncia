@@ -50,7 +50,7 @@ function LocationMarker() {
   })
 
   return location === null ? null : (
-    <MarkerIcon position={location} color={'green'}></MarkerIcon>
+    <MarkerIcon position={location} color={''}></MarkerIcon>
   )
 }
 

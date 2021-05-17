@@ -59,7 +59,8 @@ const GlobalStyles: GlobalStyleComponent<
 
   body {
     font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 1.6rem;    
+    font-size: 1.6rem;  
+    min-height: 100vh;
   }
 
 

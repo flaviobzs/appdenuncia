@@ -16,6 +16,8 @@ export const FavoriteProvider: React.FC = ({ children }) => {
   })
 
   useEffect(() => {
+
+    
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { latitude, longitude } = position.coords

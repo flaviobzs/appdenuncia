@@ -1,6 +1,7 @@
 import * as S from './styles'
 import Rating from 'react-rating'
 import TagGroup from '../TagGroup'
+import { useState } from 'react'
 
 interface AnswersRaterProps {
   name: string
@@ -18,11 +19,18 @@ const AnswerRate: React.FC<AnswersRaterProps> = ({
   error,
   ...rest
 }) => {
+  const [selected, setSelected] = useState<any>(null);
+
   return (
     <S.Wrapper>
       <Rating
         stop={4}
         step={1}
+        initialRating={selected}
+        onChange={(rate) => {
+          setValue(rate);
+          setSelected(rate);
+        }}
         {...rest}
         emptySymbol={[
           <TagGroup key={1} tag="+3" color="gray" colorTag="gray" />,

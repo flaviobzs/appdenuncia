@@ -1,4 +1,5 @@
 import Modal from '../Modal'
+import * as S from './styles'
 
 export type ModalProps = {
   isOpen: boolean
@@ -8,20 +9,18 @@ export type ModalProps = {
 const SharedModal: React.FC<ModalProps> = ({ isOpen, setIsOpen }) => {
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-      <div>
-        <h1>Ops!</h1>
-        <h1>Ops!</h1>
-        <h1>Ops!</h1>
-        <h1>Ops!</h1>
-        <h1>Ops!</h1>
-        <h1>Ops!</h1>
-        <h1>Ops!</h1>
-        <h1>Ops!</h1>
+      <S.Container>
+        <h1>Denuncia registrada!</h1>        
         <p>
-          Esse endereço de e-mail já está associado a uma conta Indicafix.
-          Acesse sua conta ou insira outro endereço de e-mail.
+          ajude a propagar ainda mais sua denuncias atraves de outras redes sociais:
         </p>
-      </div>
+        <S.IconContent>
+
+        <S.FacebookIcon/>
+        <S.WhatsappIcon/>
+        <S.TwitterIcon/>
+        </S.IconContent>
+      </S.Container>
     </Modal>
   )
 }

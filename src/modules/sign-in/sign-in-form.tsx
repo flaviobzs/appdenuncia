@@ -15,7 +15,11 @@ export default function SignInForm() {
     mode: 'onBlur'
   })
 
+  console.log(`errors`, errors)
+
   const onSubmit = async (data: any) => {
+
+    console.log(data)
     // const response = await signIn({
     // email: data.email,
     // password: data.password
@@ -26,8 +30,8 @@ export default function SignInForm() {
     //  @ts-ignore
 
     <Form onSubmit={handleSubmit(onSubmit)}>
+      
       {/* ACTIVITY FIELD */}
-
       <Description>E-mail</Description>
       <InputText
         name="email"
@@ -39,6 +43,7 @@ export default function SignInForm() {
             message: 'Endereço de email inválido'
           }
         })}
+        error={errors.email?.message}
       />
       <Description>Senha</Description>
       <InputPassword
@@ -47,6 +52,7 @@ export default function SignInForm() {
         ref={register({
           required: 'Campo obrigatório'
         })}
+        error={errors.password?.message}
       />
       <p>
         Não possui uma conta?

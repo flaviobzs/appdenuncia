@@ -7,9 +7,11 @@ const Map = dynamic(() => import('components/Map'), { ssr: false })
 const Marker = dynamic(() => import('components/Marker'), { ssr: false })
 // const Popup = dynamic(() => import('components/PopupMarker'), { ssr: false })
 
-const Location = dynamic(() => import('./location'), { ssr: false })
+const Location = dynamic(() => import('./location'), { ssr: false });
 
-import { complaits } from '../complaint/complaint.mock'
+import { mockData } from './complaint.utils';
+
+// import { complaits } from '../complaint/complaint.mock'
 import Link from 'next/link'
 
 export default function ComplaintMap() {
@@ -23,6 +25,9 @@ export default function ComplaintMap() {
       <S.ContentMap>
         <Map button={true}>
           {/* <Marker /> */}
+          {mockData.map((data, index) => (
+            <Marker key={index} position={data.location} color={String(data.quantity)} name={data.name} />
+          ))}
           <Location />
         </Map>
       </S.ContentMap>
@@ -35,8 +40,8 @@ export default function ComplaintMap() {
           </div>
         </S.ContentButton>
         <S.ContentInfo>
-          {complaits.map((data, index) => (
-            <Card key={index} label={data.name} />
+          {mockData.map((data, index) => (
+            <Card key={index} label={data.name} description={data.description}/>
           ))}
         </S.ContentInfo>
       </S.Section>

@@ -21,7 +21,7 @@ interface User {
 }
 
 interface SignInCredencials {
-  identifier: string
+  email: string
   password: string
 }
 
@@ -45,44 +45,43 @@ export const AuthProvider: React.FC = ({ children }) => {
   const { push } = useRouter()
 
   useEffect(() => {
-    const user = localStorage.getItem('social-ocean:user')
+    const user = localStorage.getItem('app-denuncia:user')
 
     if (user) {
       setUser(JSON.parse(user))
     }
   }, [])
 
-  const signIn = useCallback(async ({ identifier, password }) => {
+  const signIn = useCallback(async ({ email, password }) => {
     const response = await api.post('auth/signin', {
-      identifier,
+      email,
       password
     })
     const { user, jwt } = response.data
 
-    console.log('dataddd', response.data)
 
-    setCookie(undefined, 'social-ocean.token', jwt, {
+    setCookie(undefined, 'app-denuncia.token', jwt, {
       maxAge: 60 * 60 * 24 * 30,
       path: '/'
     })
 
-    localStorage.setItem('social-ocean:user', JSON.stringify(user))
-    localStorage.setItem('social-ocean:token', JSON.stringify(jwt))
+    localStorage.setItem('app-denuncia:user', JSON.stringify(user))
+    localStorage.setItem('app-denuncia:token', JSON.stringify(jwt))
 
     setUser(user)
 
     api.defaults.headers['Authorization'] = `Bearer ${jwt}`
 
     // redirect
-    push('/favorites')
+    push('/')
   }, [])
 
   const signOut = () => {
-    // destroyCookie(undefined, 'social-ocean.token')
-    Nookies.destroy(undefined, 'social-ocean.token')
-    // Cookies.remove('social-ocean.token')
-    localStorage.removeItem('social-ocean:user')
-    localStorage.removeItem('social-ocean:token')
+    // destroyCookie(undefined, 'app-denuncia.token')
+    Nookies.destroy(undefined, 'app-denuncia.token')
+    // Cookies.remove('app-denuncia.token')
+    localStorage.removeItem('app-denuncia:user')
+    localStorage.removeItem('app-denuncia:token')
     // redirect
     push('/')
   }
@@ -91,20 +90,20 @@ export const AuthProvider: React.FC = ({ children }) => {
     const response = await api.post('auth/signup', data)
     const { user, jwt } = response.data
 
-    setCookie(undefined, 'social-ocean.token', jwt, {
+    setCookie(undefined, 'app-denuncia.token', jwt, {
       maxAge: 60 * 60 * 24 * 30,
       path: '/'
     })
 
-    localStorage.setItem('social-ocean:user', JSON.stringify(user))
-    localStorage.setItem('social-ocean:token', JSON.stringify(jwt))
+    localStorage.setItem('app-denuncia:user', JSON.stringify(user))
+    localStorage.setItem('app-denuncia:token', JSON.stringify(jwt))
 
     setUser(user)
 
     api.defaults.headers['Authorization'] = `Bearer ${jwt}`
 
     // redirect
-    push('/favorites')
+    push('/')
   }, [])
 
   return (

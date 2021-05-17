@@ -8,7 +8,8 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   /* width: 100vw; */
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 `
 
 export const Sidebar = styled.div`
@@ -20,6 +21,7 @@ export const Sidebar = styled.div`
   justify-content: center;
   width: 250px;
   height: 100%;
+  min-height: 100vh;
   background-color: #792b3c;
   `};
 `
@@ -52,7 +54,7 @@ export const Content = styled.main`
   gap: 30px;
 
   ${media.greaterThan('medium')`
-    padding-top: 30px;
+    padding-top: 10px;
     gap: 0px;
     justify-content: center;
   `};

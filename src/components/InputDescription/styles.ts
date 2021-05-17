@@ -27,11 +27,12 @@ export const TextAreaWrapper = styled.textarea<InputProps>`
     padding: 16px;
     /* line-height: 28px; */
     font-size: 14px;
+    font-family: Poppins;
 
     border: ${isError && '2px solid #ff7608'};
 
     &:focus {
-      border: 0px;
+      /* border: 0px; */
     }
 
     input {

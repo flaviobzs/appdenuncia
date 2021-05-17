@@ -14,6 +14,7 @@
     "build-storybook": "build-storybook -s ./public"
   },
   "dependencies": {
+    "@styled-icons/bootstrap": "^10.33.0",
     "@styled-icons/entypo": "^10.18.0",
     "@styled-icons/evaicons-solid": "^10.18.0",
     "@styled-icons/material": "^10.28.0",
@@ -28,6 +29,7 @@
     "nookies": "^2.5.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-hook-form": "^6.14.0",
     "react-leaflet": "^3.1.0",
     "react-leaflet-google-layer": "^2.0.3",
     "react-loader-spinner": "^4.0.0",
@@ -37,12 +39,12 @@
     "react-select": "^4.3.0",
     "react-tooltip": "^4.2.15",
     "styled-components": "5.2.1",
-    "react-hook-form": "^6.14.0",
     "styled-media-query": "^2.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.13.8",
     "@babel/preset-typescript": "^7.13.0",
+    "@hookform/devtools": "^2.2.1",
     "@storybook/addon-essentials": "6.1.21",
     "@storybook/react": "6.1.21",
     "@testing-library/jest-dom": "^5.11.9",
