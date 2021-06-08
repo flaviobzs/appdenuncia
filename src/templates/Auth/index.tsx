@@ -22,13 +22,13 @@ const Auth = ({ title, children, position = 'right' }: AuthProps) => (
         <S.Subtitle>
           <h2>Em tempos dificéis, toda ajuda é importante!</h2>
           <h1>
-            <strong>| AppDenúncia |</strong> é o melhor lugar para indicar e
+            <strong>| No Crowd |</strong> é o melhor lugar para indicar e
             consultar lugares onde existe aglomerações.
           </h1>
         </S.Subtitle>
 
         {/* <S.Footer>AppDenúncia 2020 © Todos os Direitos Reservados</S.Footer> */}
-        <S.Footer>AppDenúncia 2020 © </S.Footer>
+        <S.Footer>No Crowd 2020 © </S.Footer>
       </S.BannerContent>
     </S.BannerBlock>
 

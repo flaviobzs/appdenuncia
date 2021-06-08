@@ -3,10 +3,12 @@ import Head from 'next/head'
 import NextNprogress from 'nextjs-progressbar'
 import GlobalStyles from 'styles/global'
 import AppProvider from '../hooks'
+import { Toaster } from 'react-hot-toast'
 
 function App({ Component, pageProps }: AppProps) {
   return (
     <AppProvider>
+      <Toaster position="top-right" reverseOrder={false} />
       <Head>
         <title>Denúncias de Aglomerações</title>
         <link rel="shortcut icon" href="/img/icon-512.png" />

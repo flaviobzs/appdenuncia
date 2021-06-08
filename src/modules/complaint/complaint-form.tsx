@@ -15,57 +15,69 @@ const Map = dynamic(() => import('components/Map'), { ssr: false })
 const Marker = dynamic(() => import('components/Marker'), { ssr: false })
 import * as S from './styles'
 import Form from 'components/Form'
-import { LeafletMouseEvent } from 'leaflet'
-import { useMapEvents } from 'react-leaflet'
+
 const Location = dynamic(() => import('./location'), { ssr: false })
 import { useAuth } from 'hooks/auth'
 import { useForm, Controller } from 'react-hook-form'
+import api from '../../service/api.service'
 
-
-import { DevTool } from '@hookform/devtools';
+import { DevTool } from '@hookform/devtools'
 import { useFavorite } from 'hooks/location'
 
-
 export default function SignUpForm() {
-  const [modalSuccessOpen, setModalSuccessOpen] = useState(true)
+  const [modalSuccessOpen, setModalSuccessOpen] = useState(false)
   const { user, signIn } = useAuth()
-  // const { location } = useFavorite()
+  const { location } = useFavorite()
 
-  const { register, control, handleSubmit, watch, errors, setValue, clearErrors } = useForm({
+  const {
+    register,
+    control,
+    handleSubmit,
+    watch,
+    errors,
+    setValue,
+    clearErrors
+  } = useForm({
     mode: 'onBlur'
   })
 
   const onSubmit = async (data: any) => {
-    // const response = await signIn({
-    // email: data.email,
-    // password: data.password
-    // })
+    console.log('fff', data)
+    const response = await api.post('/denuncia/', {
+      id_user: user.id,
+      logintude: location.lng,
+      latitude: location.lat,
+      nome_lugar: data.name,
+      tipo_lugar: data.type,
+      descricao: data.description,
+      quantidade_pessoas: data.quantity
+    })
+
+    if (response.data) {
+      setModalSuccessOpen(true)
+    }
   }
 
-  // console.log(`fff`, location)
-
   const handleOptions = (value: any) => {
-
-    console.log(`valeu`,value)
-    setValue(`type`, value?.value);
-    clearErrors(`type`);
+    console.log(`valeu`, value)
+    setValue(`type`, value?.value)
+    clearErrors(`type`)
   }
 
   const handleRateOptions = (value: any) => {
-
-    console.log(`quantity`,value)
-    setValue(`quantity`, value);
-    clearErrors(`quantity`);
+    console.log(`quantity`, value)
+    setValue(`quantity`, value)
+    clearErrors(`quantity`)
   }
 
   return (
     <>
       {/* MODAL  */}
-      {/* <Modal
+      <Modal
         isOpen={modalSuccessOpen}
         setIsOpen={() => setModalSuccessOpen(!modalSuccessOpen)}
-      /> */}
-            <DevTool control={control} />
+      />
+      {/* <DevTool control={control} /> */}
 
       {/* @ts-ignore */}
       <Form onSubmit={handleSubmit(onSubmit)}>
@@ -104,36 +116,38 @@ export default function SignUpForm() {
           name="type"
           control={control}
           rules={{ required: 'Campo obrigatório' }}
-          
         />
 
-        
         <Description>Descrição</Description>
         <Controller
           render={({ name, value }) => (
-            <InputDescription name="description" placeholder="Observações" error={errors.description?.message}/>
+            <InputDescription
+              name="description"
+              placeholder="Observações"
+              error={errors.description?.message}
+              //@ts-ignore
+              onChange={(e) => setValue('description', e.target.value)}
+            />
           )}
           name="description"
           control={control}
-          rules={{ required: 'Campo obrigatório' }}         
-          
+          // rules={{ required: 'Campo obrigatório' }}
         />
 
         <Description>Quantidade de pessoas</Description>
         <Controller
-        //@ts-ignore
-          render={({ name, value }) => <Rate name={name} error={errors.quantity?.message} setValue={(e) => handleRateOptions( e)}/>}
+          //@ts-ignore
+          render={({ name, value }) => (
+            <Rate
+              name={name}
+              error={errors.quantity?.message}
+              //@ts-ignore
+              setValue={(e) => handleRateOptions(e)}
+            />
+          )}
           name="quantity"
           control={control}
           rules={{ required: 'Campo obrigatório' }}
-          // defaultValue={
-          //   item?.category?.value
-          //     ? {
-          //         value: item?.category?.value,
-          //         label: item?.category?.label,
-          //       }
-          //     : ''
-          // }
         />
 
         <Button>CRIAR</Button>

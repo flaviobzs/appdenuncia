@@ -15,22 +15,16 @@ export default function SignInForm() {
     mode: 'onBlur'
   })
 
-  console.log(`errors`, errors)
-
   const onSubmit = async (data: any) => {
-
-    console.log(data)
-    // const response = await signIn({
-    // email: data.email,
-    // password: data.password
-    // })
+    const response = await signIn({
+      username: data.email,
+      password: data.password
+    })
   }
 
   return (
     //  @ts-ignore
-
     <Form onSubmit={handleSubmit(onSubmit)}>
-      
       {/* ACTIVITY FIELD */}
       <Description>E-mail</Description>
       <InputText

@@ -72,8 +72,9 @@ export const ContentInfo = styled.div`
   /* background-image: linear-gradient(to left, #6a11cb 0%, #2575fc 80%); */
   /* background-color: #fafafa; */
 
-  /* flex: 1; */
+  flex: 1;
   max-height: 50vh;
+
   overflow-y: scroll;
 
   border-top-left-radius: 20px;
@@ -99,7 +100,7 @@ export const ContentButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-      
+
   `}
 
   div {

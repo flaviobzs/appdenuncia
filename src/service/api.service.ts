@@ -1,14 +1,11 @@
 import axios from 'axios'
-import { parseCookies } from 'nookies'
 
-const cookies = parseCookies()
-
-const baseURL = `${process.env.NEXT_PUBLIC_API_URL}`
+const baseURL = `${process.env.NEXT_PUBLIC_HOST_API}`
 
 const apiClient = axios.create({
   baseURL,
   headers: {
-    Authorization: `Bearer ${cookies['social-ocean.token']}`
+    'Content-Type': 'application/json'
   }
 })
 
