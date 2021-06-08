@@ -7,14 +7,6 @@ services:
       - .:/app
     environment:
       - PORT=4436
-      # - NEXT_PUBLIC_HOST_API=http://127.0.0.1:4433
-      # - NEXT_PUBLIC_CUSTOMER_API=http://127.0.0.1:3000/v1
     restart: on-failure
-    networks:
-      - denuncias-app-net
-    # ports:
-    # - 4456:4456
 
-networks:
-  denuncias-app-net:
-    external: true
+
