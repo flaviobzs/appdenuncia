@@ -10,7 +10,7 @@ function App({ Component, pageProps }: AppProps) {
     <AppProvider>
       <Toaster position="top-right" reverseOrder={false} />
       <Head>
-        <title>Denúncias de Aglomerações</title>
+        <title>No Crowd</title>
         <link rel="shortcut icon" href="/img/icon-512.png" />
         <link rel="apple-touch-icon" href="/img/icon-512.png" />
         <link rel="manifest" href="/manifest.json" />
@@ -22,7 +22,7 @@ function App({ Component, pageProps }: AppProps) {
         />
         <meta
           name="description"
-          content="A simple project starter to work with TypeScript, React, NextJS and Styled Components"
+          content="No Crowd"
         />
       </Head>
       <GlobalStyles />

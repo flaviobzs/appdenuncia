@@ -1,6 +1,6 @@
 {
-  "name": "Denuncias Aglomerações",
-  "short_name": "Denuncias Agloomerações",
+  "name": "No Crowd",
+  "short_name": "No Crowd",
   "icons": [
     {
       "src": "/img/icon-192.png",
@@ -14,7 +14,7 @@
     }
   ],
   "background_color": "#06092B",
-  "description": "app denuncia",
+  "description": "No Crowd",
   "display": "fullscreen",
   "start_url": "/",
   "theme_color": "#06092B"
